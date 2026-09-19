@@ -10,15 +10,17 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    # Cố định bản Ubuntu để tránh cảnh báo chuyển đổi môi trường
+    runs-on: ubuntu-24.04
+
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.2.2
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v4.1.0
       with:
-        node-version: lts/*
+        node-version: 22
 
     - name: Install dependencies
       run: npm ci
@@ -30,7 +32,7 @@ jobs:
       run: npx playwright test
 
     - name: Upload Playwright Report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4.4.3
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
