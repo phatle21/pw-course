@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('API 2: Post To All Products List', () => {
+test.describe('API 2: Post To All Product', () => {
 
   test('Gửi phương thức POST đến endpoint chỉ hỗ trợ GET phải nhận về lỗi 405', async ({ request }) => {
     // 1. Gửi request GET
