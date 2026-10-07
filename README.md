@@ -41,3 +41,4 @@ npm install
 
 # Cài đặt trình duyệt Playwright
 npx playwright install
+

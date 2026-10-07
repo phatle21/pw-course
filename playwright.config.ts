@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
+  timeout: 30000, 
 
   /* Tắt chạy song song các file test */
   fullyParallel: false,
@@ -13,14 +14,25 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   /* Retry khi chạy trên CI */
-  retries: process.env.CI ? 2 : 0,
+//  retries: process.env.CI ? 2 : 0,
+  retries: 0,
 
   /* Xuất báo cáo dạng HTML */
-  reporter: 'html',
+ // reporter: 'html', 
+  reporter: [
+  ['monocart-reporter', {
+    name: 'API Test Automation Report',
+    outputFile: './monocart-report/report.html'
+  }]
+],
 
   /* Cấu hình chung */
   use: {
     trace: 'on-first-retry',
+    baseURL: 'https://automationexercise.com',
+    extraHTTPHeaders: {
+      'Accept': 'application/json',
+    },
   },
 
   /* Chỉ cấu hình duy nhất Google Chrome */

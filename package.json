@@ -10,6 +10,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
-    "@types/node": "^25.6.0"
+    "@types/node": "^25.6.0",
+    "monocart-reporter": "^2.14.1"
   }
 }
